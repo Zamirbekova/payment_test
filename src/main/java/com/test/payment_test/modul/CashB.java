@@ -27,6 +27,8 @@ public class CashB {
     private BigDecimal money;
 
     @OneToOne
-    private User user;
+    private Users senderId;
+    @OneToOne
+    private Recipient recipientId;
 
 }

@@ -28,7 +28,7 @@ public class CashA {
     private String uniqueCode;
     private BigDecimal money;
     @OneToOne
-    private User user;
+    private Users user;
     @Enumerated
     private Status status;
 

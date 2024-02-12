@@ -79,38 +79,40 @@
 <body>
 <form  th:method="POST" th:action="@{save}" th:object="${sendMoney}" style="width: 50%">
     <div class="mb-3">
-        <label for="surNameSender" class="form-label">Surnamesender</label>
+        <label for="surNameSender" class="form-label">SurName sender</label>
         <input type="text" class="form-control"  th:field="*{surNameSender}" id="surNameSender">
     </div>
     <div class="mb-3">
-        <label for="phoneNumberSender" class="form-label">phoneNumberSender</label>
+        <label for="phoneNumberSender" class="form-label">PhoneNumber Sender</label>
         <input type="text" class="form-control" th:field="*{phoneNumberSender}" id="phoneNumberSender">
     </div>
     <div class="mb-3">
-        <label for="surNameRecipient" class="form-label">SurNameRecipient</label>
+        <label for="surNameRecipient" class="form-label">SurName Recipient</label>
         <input type="text" class="form-control" th:field="*{surNameRecipient}" id="surNameRecipient">
     </div>
     <div class="mb-3">
-        <label for="phoneNumberRecipient" class="form-label">phoneNumberRecipient</label>
+        <label for="phoneNumberRecipient" class="form-label">PhoneNumber Recipient</label>
         <input type="text" class="form-control" th:field="*{phoneNumberRecipient}" id="phoneNumberRecipient">
     </div>
     <div class="mb-3">
-        <label for="description" class="form-label">description</label>
+        <label for="description" class="form-label">Description</label>
         <input type="text" class="form-control" th:field="*{description}" id="description">
     </div>
     <div class="mb-3">
-        <label for="date" class="form-label">date</label>
+        <label for="date" class="form-label">Date</label>
         <input type="text" class="form-control" th:field="*{date}" id="date">
     </div>
     <div class="mb-3">
-        <label for="uniqueCode" class="form-label">uniqueCode</label>
+        <label for="uniqueCode" class="form-label">Unique Code</label>
         <input type="text" class="form-control" th:field="*{uniqueCode}" id="uniqueCode">
     </div>
     <div class="mb-3">
-        <label for="money" class="form-label">money</label>
+        <label for="money" class="form-label">Sum</label>
         <input type="text" class="form-control" th:field="*{money}" id="money">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney"> Get money </a>
+
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
