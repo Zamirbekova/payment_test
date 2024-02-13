@@ -1,100 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Send Money</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Send Money</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <style>
-  body {
-    background-image: url("https://marketplace.canva.com/EAEw4tqSmZk/1/0/1600w/canva-motivational-quote-abstract-minimalist-desktop-wallpaper-Vg6MBxUwt0Q.jpg");
-  }
+    body {
+        background-image: url("https://marketplace.canva.com/EAEw4tqSmZk/1/0/1600w/canva-motivational-quote-abstract-minimalist-desktop-wallpaper-Vg6MBxUwt0Q.jpg");
+    }
 </style>
-<form  th:method="GET" th:action="@{save}" th:object="${sendMoney}" style="width: 50%">
+<form th:method="GET" th:action="@{save}" th:object="${sendMoney}" style="width: 50%">
     <a class="d-grid gap-2 btn  btn-success" role="button" href="/login"> Login </a>
 
 
     <a class="d-grid gap-2 btn  btn-success" role="button" href="/sendMoney/new">Send money</a>
-<div th:each="comp:${allCashs}">
-  <br><br>
-  <div class="card text-center card border-warning mb-3 bg-light mb-3">
-    <div class="card-header bg-warning">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="true" href="#">Active</a>
-        </li>
-<!--        <li class="nav-item">-->
-<!--          <form th:method="DELETE" th:action="@{/companies/{id}/delete (id=${comp.id})}">-->
-<!--            <input  type="submit" class="btn btn-outline-secondary " th:value="delete">-->
-<!--          </form>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="btn btn-outline-secondary" role="button" th:href="@{/companies/{id}/edit (id=${comp.id})}"-->
-<!--             th:value="update">update</a>-->
-<!--        </li>-->
-      </ul>
+    <div th:each="comp:${allCashs}">
+        <br><br>
+        <div class="card text-center card border-warning mb-3 bg-light mb-3">
+            <div class="card-header bg-warning">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" href="#">Active</a>
+                    </li>
+                    <!--        <li class="nav-item">-->
+                    <!--          <form th:method="DELETE" th:action="@{/companies/{id}/delete (id=${comp.id})}">-->
+                    <!--            <input  type="submit" class="btn btn-outline-secondary " th:value="delete">-->
+                    <!--          </form>-->
+                    <!--        </li>-->
+                    <!--        <li class="nav-item">-->
+                    <!--          <a class="btn btn-outline-secondary" role="button" th:href="@{/companies/{id}/edit (id=${comp.id})}"-->
+                    <!--             th:value="update">update</a>-->
+                    <!--        </li>-->
+                </ul>
+            </div>
+            <div class="card-body">
+                <td style="background-color:yellowgreen;color:yellow;">  <th scope="col">SurName sender <p class="card-text" th:text="${comp.surNameSender}"></p></th></td>
+                <th scope="col">SurName recipient <p class="card-text" th:text="${comp.surNameRecipient}"></p>
+                <th scope="col">Phone number recipient <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>
+                <th scope="col">Phone number sender <p class="card-text" th:text="${comp.phoneNumberSender}"></p>
+                <th scope="col">Description <p class="card-text" th:text="${comp.description}"></p>
+                <th scope="col">Date <p class="card-text" th:text="${comp.date}"></p>
+                <th scope="col">Your unique code <p class="card-text" th:text="${comp.uniqueCode}"></p>
+                <th scope="col">Your money sum <p class="card-text" th:text="${comp.money}"></p>
+
+                    <div class="d-grid gap-2 col-6 mx-auto">
+
+                        <!--        <a class="btn btn-secondary" type="button" th:href="@{/courses/{id}(id=${comp.getId()})}" th:text="${comp.name}">Button</a>-->
+                    </div>
+            </div>
+            <div class="card-footer text-muted  bg-warning">
+                Get Money
+                <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney"> Get money </a>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-<!--      <h5 class="card-title" th:text="${comp.surNameRecipient}"></h5>-->
-        <th scope="col">SurName sender <p class="card-text" th:text="${comp.surNameSender}"></p> </th>
-      <p class="card-text" th:text="${comp.surNameRecipient}"></p>
-      <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>
-      <p class="card-text" th:text="${comp.phoneNumberSender}"></p>
-      <p class="card-text" th:text="${comp.description}"></p>
-      <p class="card-text" th:text="${comp.date}"></p>
-      <p class="card-text" th:text="${comp.uniqueCode}"></p>
-        <p class="card-text" th:text="${comp.money}"></p>
-
-      <div class="d-grid gap-2 col-6 mx-auto">
-
-<!--        <a class="btn btn-secondary" type="button" th:href="@{/courses/{id}(id=${comp.getId()})}" th:text="${comp.name}">Button</a>-->
-      </div>
-    </div>
-    <div class="card-footer text-muted  bg-warning">
-      Get Money
-        <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney"> Get money </a>
-    </div>
-  </div>
-</div>
 
 
-<!--<table class="table table-warning table-hover">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th scope="col">#</th>-->
-<!--        <th scope="col">SurName sender</th>-->
-<!--        <th scope="col">located</th>-->
-<!--        <th scope="col">Delete</th>-->
-<!--        <th scope="col">Update</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--</table>-->
-<!--    <tbody th:each="comp:${companies}">-->
-<!--    <tr>-->
-<!--        <th scope="row" th:text="${comp.id}"></th>-->
-<!--        <td><a th:href="@{/courses/{id}(id=${comp.getId()})}" style="color: black" th:text="${comp.name}"></a></td>-->
-<!--        <td th:text="${comp.locatedCountry}"></td>-->
+    <!--<table class="table table-warning table-hover">-->
+    <!--    <thead>-->
+    <!--    <tr>-->
+    <!--        <th scope="col">#</th>-->
+    <!--        <th scope="col">SurName sender</th>-->
+    <!--        <th scope="col">located</th>-->
+    <!--        <th scope="col">Delete</th>-->
+    <!--        <th scope="col">Update</th>-->
+    <!--    </tr>-->
+    <!--    </thead>-->
+    <!--</table>-->
+    <!--    <tbody th:each="comp:${companies}">-->
+    <!--    <tr>-->
+    <!--        <th scope="row" th:text="${comp.id}"></th>-->
+    <!--        <td><a th:href="@{/courses/{id}(id=${comp.getId()})}" style="color: black" th:text="${comp.name}"></a></td>-->
+    <!--        <td th:text="${comp.locatedCountry}"></td>-->
 
-<!--        <td>-->
-<!--            <form th:method="DELETE" th:action="@{/companies/{id}/delete (id=${comp.id})}">-->
-<!--                <input type="submit" class="btn btn-primary" th:value="delete">-->
-<!--            </form>-->
-<!--        </td>-->
-<!--        <td>-->
+    <!--        <td>-->
+    <!--            <form th:method="DELETE" th:action="@{/companies/{id}/delete (id=${comp.id})}">-->
+    <!--                <input type="submit" class="btn btn-primary" th:value="delete">-->
+    <!--            </form>-->
+    <!--        </td>-->
+    <!--        <td>-->
 
-<!--            <a class="btn btn-primary" role="button" th:href="@{/companies/{id}/edit (id=${comp.id})}"-->
-<!--               th:value="update">update</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<!--<a class="btn btn-primary" role="button" href="/companies/new">Add new company</a>-->
+    <!--            <a class="btn btn-primary" role="button" th:href="@{/companies/{id}/edit (id=${comp.id})}"-->
+    <!--               th:value="update">update</a>-->
+    <!--        </td>-->
+    <!--    </tr>-->
+    <!--    </tbody>-->
+    <!--</table>-->
+    <!--<a class="btn btn-primary" role="button" href="/companies/new">Add new company</a>-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 </form>
 </body>
 

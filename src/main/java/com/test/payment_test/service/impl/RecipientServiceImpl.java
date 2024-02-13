@@ -1,4 +1,4 @@
-package com.test.payment_test.service;
+package com.test.payment_test.service.impl;
 
 import com.test.payment_test.modul.Recipient;
 import com.test.payment_test.repository.RecipientRepository;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class RecipientService implements UserDetailsService {
+public class RecipientServiceImpl implements UserDetailsService {
     private final RecipientRepository recipientRepository;
 
     @Transactional

@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CashBRepository extends JpaRepository<CashB,Long> {
-    CashB findByUniqueCode(String uniqueCode);
+    CashB findCashBByUniqueCode (String uniqueCode);
     boolean existsByUniqueCode(String code);
-    CashB findByRecipientId(Recipient recipient);
 
 }

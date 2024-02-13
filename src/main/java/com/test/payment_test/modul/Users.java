@@ -1,20 +1,26 @@
 package com.test.payment_test.modul;
 
 import com.test.payment_test.role.Role;
+import com.test.payment_test.valid.PasswordMatches;
+import com.test.payment_test.valid.ValidEmail;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "sender_users")
 @Getter
 @Setter
+@PasswordMatches
 public class Users implements UserDetails {
 
     @Id
@@ -28,18 +34,23 @@ public class Users implements UserDetails {
     private BigDecimal money;
     private String uniqueCode;
     private String password;
+    private String matchingPassword;
+    @ValidEmail
+    private String email;
     @Enumerated
     private Role role;
+    private String description;
+    private LocalDate date;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(getRole());
+        return Collections.singleton(role);
     }
 
     @Override
     public String getUsername() {
-        return phoneNumberSender;
+        return email;
     }
 
     @Override

@@ -1,15 +1,14 @@
-package com.test.payment_test.service;
+package com.test.payment_test.service.impl;
 
 
 import com.test.payment_test.repository.AuthRepository;
-import com.test.payment_test.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class AuthService {
+public class AuthServiceImpl {
     private final AuthRepository loginRepository;
+
 
 }

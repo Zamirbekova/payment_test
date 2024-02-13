@@ -3,6 +3,7 @@ package com.test.payment_test.modul;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,7 +29,6 @@ public class CashB {
 
     @OneToOne
     private Users senderId;
-    @OneToOne
-    private Recipient recipientId;
+
 
 }

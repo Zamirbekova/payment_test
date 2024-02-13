@@ -8,10 +8,15 @@
 <body>
 
 <form  th:method="POST" th:action="@{/user/save}" th:object="${getMoney}" style="width: 50%">
+
+<!--    <th:block th:each="${getMoney}" >-->
+<!--        <a th:href="@{/(code=${getMoney})}"></a> <br/>-->
+<!--    </th:block>-->
+
     <div class="mb-3">
-        <label for="uniqueCode" class="form-label">Please write your UniqueCode</label>
-        <input type="text" class="form-control"  th:field="*{uniqueCode}" id="uniqueCode">
-    </div>
+    <label for="uniqueCode" class="form-label">Please write your UniqueCode</label>
+    <input type="text" class="form-control"  th:field="*{uniqueCode}" id="uniqueCode">
+</div>
 <!--    <div class="mb-3">-->
 <!--        <label for="locatedCountry" class="form-label">Country</label>-->
 <!--        <input type="text" class="form-control" th:field="*{locatedCountry}" id="locatedCountry">-->

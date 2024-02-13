@@ -1,13 +1,7 @@
 package com.test.payment_test;
 
-import com.test.payment_test.modul.Recipient;
-import com.test.payment_test.modul.Users;
-import com.test.payment_test.role.Role;
-import com.test.payment_test.service.UserService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.core.userdetails.User;
 
 @SpringBootApplication
 public class PaymentTestApplication {
