@@ -27,6 +27,7 @@ public class CashB {
     private String uniqueCode;
     private BigDecimal money;
 
+
     @OneToOne
     private Users senderId;
 

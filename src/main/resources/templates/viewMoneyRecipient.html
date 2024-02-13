@@ -12,10 +12,11 @@
         background-image: url("https://marketplace.canva.com/EAEw4tqSmZk/1/0/1600w/canva-motivational-quote-abstract-minimalist-desktop-wallpaper-Vg6MBxUwt0Q.jpg");
     }
 </style>
-<form  th:method="GET" th:action="@{user/save}" th:object="${getMoney}" style="width: 50%">
 
     <a class="d-grid gap-2 btn  btn-success" role="button" href="/sendMoney/new">Send money</a>
-    <div th:each="comp:${getMoney}">
+<form  th:method="POST" th:action="@{/user/save}" th:object="${code}" style="width: 50%">
+
+    <div th:each="comp:${code}">
         <br><br>
         <div class="card text-center card border-warning mb-3 bg-light mb-3">
             <div class="card-header bg-warning">
@@ -28,7 +29,7 @@
 <!--    <th scope="col">SurName sender <p class="card-text" th:text="${comp.surNameSender}"></p> </th>-->
     <p class="card-text" th:text="${comp.surNameSender}"></p>
     <p class="card-text" th:text="${comp.surNameRecipient}"></p>
-    <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>
+<!--    <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>-->
     <p class="card-text" th:text="${comp.phoneNumberSender}"></p>
     <p class="card-text" th:text="${comp.description}"></p>
     <p class="card-text" th:text="${comp.date}"></p>

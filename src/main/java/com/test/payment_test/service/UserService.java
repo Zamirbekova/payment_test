@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    Users getMoney(String code);
+    Users getMoney(Users code);
 
     List<Users> getAll();
 

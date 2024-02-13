@@ -6,10 +6,7 @@ import jakarta.annotation.security.PermitAll;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -28,16 +25,16 @@ public class UserController {
 
     @PostMapping("/save")
     @PermitAll
-    public String getMoneySave(Model model, @RequestParam("code") String code) {
-        model.addAttribute("getMoney", service.getMoney(code));
+    public String getMoneySave(@ModelAttribute("code") Users code) {
+       service.getMoney(code);
         return "viewMoneyRecipient";
 
     }
 
     @GetMapping("/save")
     @PermitAll
-    public String getMoneys(Model model, @RequestParam("code") String code) {
-        model.addAttribute("getMoney", service.getMoney(code));
+    public String getMoneys(Model model,Users c) {
+        model.addAttribute("code", service.getMoney(c));
         return "viewMoneyRecipient";
 
     }

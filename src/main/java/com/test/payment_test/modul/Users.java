@@ -1,12 +1,10 @@
 package com.test.payment_test.modul;
 
 import com.test.payment_test.role.Role;
-import com.test.payment_test.valid.PasswordMatches;
 import com.test.payment_test.valid.ValidEmail;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.cglib.core.Local;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,13 +12,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Entity
 @Table(name = "sender_users")
 @Getter
 @Setter
-@PasswordMatches
 public class Users implements UserDetails {
 
     @Id
@@ -30,7 +26,7 @@ public class Users implements UserDetails {
     private String surNameSender;
     private String phoneNumberSender;
     private String surNameRecipient;
-    private String phoneNumberRecipient;
+//    private String phoneNumberRecipient;
     private BigDecimal money;
     private String uniqueCode;
     private String password;

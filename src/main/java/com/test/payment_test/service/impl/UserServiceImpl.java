@@ -1,5 +1,6 @@
 package com.test.payment_test.service.impl;
 
+import com.test.payment_test.exception.NotFoundException;
 import com.test.payment_test.exception.UserAlreadyExistException;
 import com.test.payment_test.modul.CashB;
 import com.test.payment_test.modul.Users;
@@ -29,12 +30,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 
     @Override
-    public Users getMoney(String users) {
-        CashB cashB = cashBRepository.findCashBByUniqueCode(users);
-        if (cashB.getUniqueCode().equals(users) ){
-            return repository.findUsersByUniqueCode(users);
+    public Users getMoney(Users users) {
+        Users users1 = repository.findUsersByUniqueCode(users.getUniqueCode());
+        boolean exists = cashBRepository.existsByUniqueCode(users.getUniqueCode());
+        CashB cashB = cashBRepository.findCashBByUniqueCode(users.getUniqueCode());
+        if (exists) {
+            if (users1.getUniqueCode().equals(cashB.getUniqueCode())) {
+                return users1;
+            }
+            throw new NotFoundException("not found unique code ");
         }
         return null;
+
     }
 
     @Override

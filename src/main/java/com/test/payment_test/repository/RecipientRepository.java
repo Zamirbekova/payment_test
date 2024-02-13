@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RecipientRepository extends JpaRepository<Recipient,Long> {
-    Recipient findByPhoneNumberRecipient(String number);
+//    Recipient findByPhoneNumberRecipient(String number);
     Recipient getRecipientByUniqueCode(String code);
 }
