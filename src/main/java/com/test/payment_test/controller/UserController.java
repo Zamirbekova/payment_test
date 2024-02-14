@@ -1,5 +1,6 @@
 package com.test.payment_test.controller;
 
+import com.test.payment_test.modul.CashB;
 import com.test.payment_test.modul.Users;
 import com.test.payment_test.service.UserService;
 import jakarta.annotation.security.PermitAll;
@@ -19,31 +20,25 @@ public class UserController {
     @GetMapping("/getMoney")
     @PermitAll
     public String getMoney(Model model) {
-        model.addAttribute("getMoney", new Users());
+        model.addAttribute("getMoney", new CashB());
         return "getMoney";
     }
 
-    @PostMapping("/save")
-    @PermitAll
-    public String getMoneySave(Model model, @RequestParam("code") String code) {
-        model.addAttribute("code", service.getMoney(code));
-        return "viewMoneyRecipient";
 
+    @GetMapping("/search/{keyword}")
+    public String search(@PathVariable String keyword, Model model) {
+       CashB results = service.getMoneyUser(keyword);
+        model.addAttribute("results", results);
+        return "viewMoneyRecipient";
     }
 
-    @GetMapping("/save")
-    @PermitAll
-    public String getMoneys(Model model, @RequestParam String code) {
-        model.addAttribute("code",service.getMoney(code));
-        return "viewMoneyRecipient";
-
-    }
-    @GetMapping
-    @PermitAll
-    public String getMon(Model model){
-        model.addAttribute("mon",service.getAll());
-        return "getAllUsers";
-        }
+//    @GetMapping("/get")
+//    @PermitAll
+//    public String getMoneys(Model model,CashB cashB) {
+//        model.addAttribute("code",service.getMoneyUser(cashB.getUniqueCode()));
+//        return "viewMoneyRecipient";
+//
+//    }
 
     }
 

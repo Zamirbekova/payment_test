@@ -23,9 +23,8 @@ public class Users implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String surNameSender;
-    private String phoneNumberSender;
-    private String surNameRecipient;
+    private String surName;
+    private String phoneNumber;
     private BigDecimal money;
     private String uniqueCode;
     private String password;

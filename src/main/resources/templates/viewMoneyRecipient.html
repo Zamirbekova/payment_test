@@ -1,45 +1,73 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Send Money</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--</head>-->
+<!--<body>-->
+<!--<style>-->
+<!--    body {-->
+<!--        background-image: url("https://marketplace.canva.com/EAEw4tqSmZk/1/0/1600w/canva-motivational-quote-abstract-minimalist-desktop-wallpaper-Vg6MBxUwt0Q.jpg");-->
+<!--    }-->
+<!--</style>-->
+
+<!--<a class="d-grid gap-2 btn  btn-success" role="button" href="/sendMoney/new">Send money</a>-->
+<!--<a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney">Get money</a>-->
+
+<!--<form th:method="GET" th:action="@{/user/get}" th:object="${code}" style="width: 50%">-->
+
+<!--    <div th:each="comp:${code}">-->
+<!--        <br><br>-->
+<!--        <div class="card text-center card border-warning mb-3 bg-light mb-3">-->
+<!--            <div class="card-header bg-warning">-->
+<!--                <ul class="nav nav-tabs card-header-tabs">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="true" href="#">Active</a>-->
+<!--                    </li>-->
+
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <td style="background-color:yellowgreen;color:yellow;">-->
+<!--            <th scope="col">SurName sender <p class="card-text" th:text="${code.surNameSender}"></p></th>-->
+<!--            <th scope="col">SurName recipient <p class="card-text" th:text="${code.surNameRecipient}"></p>-->
+<!--                        <th scope="col">Phone number recipient <p class="card-text" th:text="${code.phoneNumberRecipient}"></p>-->
+<!--            <th scope="col">Phone number sender <p class="card-text" th:text="${code.phoneNumberSender}"></p>-->
+<!--            <th scope="col">Description <p class="card-text" th:text="${code.description}"></p>-->
+<!--            <th scope="col">Date <p class="card-text" th:text="${code.date}"></p>-->
+<!--            <th scope="col">Your unique code <p class="card-text" th:text="${code.uniqueCode}"></p>-->
+<!--            <th scope="col">Your money sum <p class="card-text" th:text="${code.money}"></p>-->
+<!--</div>-->
+<!--</form>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Send Money</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
 </head>
 <body>
-<style>
-    body {
-        background-image: url("https://marketplace.canva.com/EAEw4tqSmZk/1/0/1600w/canva-motivational-quote-abstract-minimalist-desktop-wallpaper-Vg6MBxUwt0Q.jpg");
-    }
-</style>
 
-<a class="d-grid gap-2 btn  btn-success" role="button" href="/sendMoney/new">Send money</a>
-<a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney">Get money</a>
+<h1>Search</h1>
 
-<form th:method="POST" th:action="@{/user/save}" th:object="${code}" style="width: 50%">
-
-    <div th:each="comp:${code}">
-        <br><br>
-        <div class="card text-center card border-warning mb-3 bg-light mb-3">
-            <div class="card-header bg-warning">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="true" href="#">Active</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="card-body">
-            <td style="background-color:yellowgreen;color:yellow;">
-            <th scope="col">SurName sender <p class="card-text" th:text="${comp.surNameSender}"></p></th>
-            <th scope="col">SurName recipient <p class="card-text" th:text="${comp.surNameRecipient}"></p>
-                <!--        <th scope="col">Phone number recipient <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>-->
-            <th scope="col">Phone number sender <p class="card-text" th:text="${comp.phoneNumberSender}"></p>
-            <th scope="col">Description <p class="card-text" th:text="${comp.description}"></p>
-            <th scope="col">Date <p class="card-text" th:text="${comp.date}"></p>
-            <th scope="col">Your unique code <p class="card-text" th:text="${comp.uniqueCode}"></p>
-            <th scope="col">Your money sum <p class="card-text" th:text="${comp.money}"></p>
-</div>
+<form action="user/search/{keyword}" method="get">
+    <label for="keyword">Keyword:</label>
+    <input type="text" id="keyword" name="keyword" required>
+    <button type="submit">Search</button>
 </form>
+
+<!-- Display search results if available -->
+<!--<ul th:if="${results}">-->
+    <li th:each="result : ${results}"></li>
+        <ul th:if="${results}">
+        <span th:text="${result.money}"></span>
+
+
+</ul>
+
+</body>
 </html>

@@ -15,7 +15,7 @@ public class WebConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configurer ->
-                configurer.requestMatchers("/log/**", "/registration/**", "/sendMoney/**", "/user/**", "/payment").permitAll()
+                configurer.requestMatchers("/log/**", "/registration/**", "/sendMoney/**", "/user/**", "/payment","user/search/**").permitAll()
                         .anyRequest().authenticated()
 
         );

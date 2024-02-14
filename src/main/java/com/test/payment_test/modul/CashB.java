@@ -1,5 +1,6 @@
 package com.test.payment_test.modul;
 
+import com.test.payment_test.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,10 +27,9 @@ public class CashB {
     private LocalDate date;
     private String uniqueCode;
     private BigDecimal money;
-    private String emailUser;
+    @Enumerated
+    private Status status;
 
-    @OneToOne
-    private Users senderId;
 
 
 }

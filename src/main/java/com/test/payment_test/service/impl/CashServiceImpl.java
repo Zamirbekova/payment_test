@@ -1,5 +1,6 @@
 package com.test.payment_test.service.impl;
 
+import com.test.payment_test.Status;
 import com.test.payment_test.modul.CashB;
 import com.test.payment_test.modul.Users;
 import com.test.payment_test.repository.CashBRepository;
@@ -31,18 +32,19 @@ public class CashServiceImpl implements CashService {
         cashB.setSurNameRecipient(cashA.getSurNameRecipient());
         cashB.setSurNameSender(cashA.getSurNameSender());
         cashB.setUniqueCode(cashA.getUniqueCode());
+        cashB.setStatus(Status.CREATED);
 
-        Users users = userRepository.findByEmail(cashA.getEmailUser());
-        assert users != null;
-        cashB.setMoney(addMoneyToUser(users.getEmail(), cashA.getMoney()));
-        cashB.setEmailUser(cashA.getEmailUser());
-        users.setSurNameSender(cashA.getSurNameSender());
-        users.setPhoneNumberSender(cashA.getPhoneNumberSender());
-        users.setSurNameRecipient(cashA.getSurNameRecipient());
-        users.setUniqueCode(cashA.getUniqueCode());
-        users.setDate(cashA.getDate());
-        users.setDescription(cashA.getDescription());
-        userRepository.save(users);
+//        Users users = userRepository.findByEmail(cashA.getEmailUser());
+//        assert users != null;
+//        cashB.setMoney(addMoneyToUser(users.getEmail(), cashA.getMoney()));
+//        cashB.setEmailUser(cashA.getEmailUser());
+//        users.setSurNameSender(cashA.getSurNameSender());
+//        users.setPhoneNumberSender(cashA.getPhoneNumberSender());
+//        users.setSurNameRecipient(cashA.getSurNameRecipient());
+//        users.setUniqueCode(cashA.getUniqueCode());
+//        users.setDate(cashA.getDate());
+//        users.setDescription(cashA.getDescription());
+//        userRepository.save(users);
         return cashBRepository.save(cashB);
 
     }
