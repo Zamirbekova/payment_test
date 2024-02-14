@@ -1,11 +1,9 @@
 package com.test.payment_test.service.impl;
 
-import com.test.payment_test.exception.NotFoundException;
 import com.test.payment_test.exception.UserAlreadyExistException;
 import com.test.payment_test.modul.CashB;
 import com.test.payment_test.modul.Users;
 import com.test.payment_test.repository.CashBRepository;
-import com.test.payment_test.repository.RecipientRepository;
 import com.test.payment_test.repository.UserRepository;
 import com.test.payment_test.role.Role;
 import com.test.payment_test.service.UserService;
@@ -23,26 +21,23 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserDetailsService, UserService {
 
-    private final CashBRepository cashBRepository;
     private final UserRepository repository;
-
-    private final RecipientRepository recipientRepository;
+    private final CashBRepository cashBRepository;
 
 
     @Override
-    public Users getMoney(Users users) {
-        Users users1 = repository.findUsersByUniqueCode(users.getUniqueCode());
-        boolean exists = cashBRepository.existsByUniqueCode(users.getUniqueCode());
-        CashB cashB = cashBRepository.findCashBByUniqueCode(users.getUniqueCode());
-        if (exists) {
+    public Users getMoney(String users) {
+        Users users1 = repository.findUsersByUniqueCode(users);
+        CashB cashB = cashBRepository.findCashBByUniqueCode(users);
+        if (users1.getUniqueCode() != null) {
             if (users1.getUniqueCode().equals(cashB.getUniqueCode())) {
                 return users1;
             }
-            throw new NotFoundException("not found unique code ");
+
         }
         return null;
-
     }
+
 
     @Override
     public List<Users> getAll() {
@@ -86,51 +81,4 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 }
 
-
-//    public Users findByCode(String code) {
-//        return userRepository.findByUniqueCode(code);
-//    }
-
-//    public boolean saveUser(Users user) {
-//        Users userFromDB = userRepository.findByPhoneNumberSender(user.getPhoneNumberSender());
-//
-//        if (userFromDB != null) {
-//            return false;
-//        }
-//
-//        user.setRole(Role.SENDER);
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        user.setPhoneNumberSender(user.getPhoneNumberSender());
-//        userRepository.save(user);
-//        return true;
-//    }
-
-//    public Users findByPhoneNumber(String phoneNumberSender) {
-//
-//        return userRepository.findByPhoneNumberSender(phoneNumberSender);
-//    }
-//
-//    @Transactional
-//    public Users register(Users users) {
-//        Users users1 = new Users();
-//        UserDetails rec = User.withDefaultPasswordEncoder()
-//                .username(users.getPhoneNumberRecipient())
-//                .password(users.getPassword())
-//                .roles(String.valueOf(Role.SENDER))
-//                .build();
-//        users1.setPhoneNumberSender(rec.getUsername());
-//        users1.setPassword(rec.getPassword());
-//        users1.setRole(Role.SENDER);
-//        return userRepository.save(users1);
-//
-//    }
-
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Users users = userRepository.findByPhoneNumberSender(username);
-//        if (users==null){
-//            throw new UsernameNotFoundException("User not found");
-//        }
-//        return users;
-//    }
 

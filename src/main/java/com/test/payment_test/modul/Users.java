@@ -26,7 +26,6 @@ public class Users implements UserDetails {
     private String surNameSender;
     private String phoneNumberSender;
     private String surNameRecipient;
-//    private String phoneNumberRecipient;
     private BigDecimal money;
     private String uniqueCode;
     private String password;

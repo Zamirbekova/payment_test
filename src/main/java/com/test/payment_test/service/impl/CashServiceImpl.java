@@ -32,9 +32,10 @@ public class CashServiceImpl implements CashService {
         cashB.setSurNameSender(cashA.getSurNameSender());
         cashB.setUniqueCode(cashA.getUniqueCode());
 
-        Users users = userRepository.findByEmail(cashA.getSenderId().getEmail());
+        Users users = userRepository.findByEmail(cashA.getEmailUser());
         assert users != null;
         cashB.setMoney(addMoneyToUser(users.getEmail(), cashA.getMoney()));
+        cashB.setEmailUser(cashA.getEmailUser());
         users.setSurNameSender(cashA.getSurNameSender());
         users.setPhoneNumberSender(cashA.getPhoneNumberSender());
         users.setSurNameRecipient(cashA.getSurNameRecipient());

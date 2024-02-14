@@ -5,15 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,Long> {
-    Users findBySurNameSender(String name);
-    Users findByPhoneNumberSender(String number);
-//    Users findByPhoneNumberRecipient(String number);
+public interface UserRepository extends JpaRepository<Users, Long> {
+
 
     Users findByEmail(String email);
+
     boolean existsByEmail(String email);
 
     Users findUsersByUniqueCode(String code);
-    Users findUsersByPhoneNumberSender(String number);
 
+
+    Users findByUniqueCode(String code);
 }

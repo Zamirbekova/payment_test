@@ -1,74 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns="http://www.w3.org/1999/html">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Send money </title>-->
-<!--</head>-->
-<!--<table class="table table-striped">-->
-<!-- <thead>-->
-<!--    <tbody>-->
-
-<!--<tr>-->
-<!--    <th scope="col">1</th>-->
-<!--    <td>SurNameSender</td>-->
-<!--    <td><input type="SurNameSender" id="SurNameSender"></input/></td>-->
-
-<!--</tr>-->
-<!--<tr>-->
-<!--    <th scope="col">2</th>-->
-<!--    <td>PhoneNumberSender</td>-->
-<!--    <td><input type="PhoneNumberSender" id="PhoneNumberSender"></input/></td>-->
-
-<!--</tr>-->
-<!--<tr>-->
-<!--    <th scope="col">3</th>-->
-<!--    <td>Description</td>-->
-<!--    <td><input type="Description" id="Description"></input/></td>-->
-
-<!--</tr>-->
-
-<!--<tr>-->
-<!--    <th scope="col">1</th>-->
-<!--    <td>SurNameRecipient</td>-->
-<!--    <td><input type="SurNameRecipient" id="SurNameRecipient"></input/></td>-->
-
-<!--</tr>-->
-<!--<tr>-->
-<!--    <th scope="col">2</th>-->
-<!--    <td>PhoneNumberRecipient</td>-->
-<!--    <td><input type="PhoneNumberRecipient" id="PhoneNumberRecipient"></input/></td>-->
-
-<!--</tr>-->
-<!--<tr>-->
-<!--    <th scope="col">3</th>-->
-<!--    <td>Description</td>-->
-<!--    <td><input type="Description" id="Description"></input/></td>-->
-
-<!--</tr>-->
-
-<!--<tr>-->
-<!--    <th scope="col">3</th>-->
-<!--    <td>Date</td>-->
-<!--    <td><input type="Date" id="Date"></input/></td>-->
-
-<!--</tr>-->
-
-<!--<tr>-->
-<!--    <th scope="col">3</th>-->
-<!--    <td>UniqueCode</td>-->
-<!--    <td><input type="UniqueCode" id="UniqueCode"></input/></td>-->
-
-<!--</tr>-->
-<!--<tr rowspan="2">-->
-<!--    <td> <input type="submit" ></input/> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" methods="POST">  </td>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -77,6 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+<style>
+    body {
+        background-image: url("https://marketplace.canva.com/EAEw4tqSmZk/1/0/1600w/canva-motivational-quote-abstract-minimalist-desktop-wallpaper-Vg6MBxUwt0Q.jpg");
+    }
+</style>
 <form  th:method="POST" th:action="@{save}" th:object="${sendMoney}" style="width: 50%">
     <div class="mb-3">
         <label for="surNameSender" class="form-label">SurName sender</label>
@@ -103,6 +37,10 @@
         <input type="text" class="form-control" th:field="*{date}" id="date">
     </div>
     <div class="mb-3">
+        <label for="emailUser" class="form-label">Email</label>
+        <input type="text" class="form-control" th:field="*{emailUser}" id="emailUser">
+    </div>
+    <div class="mb-3">
         <label for="uniqueCode" class="form-label">Unique Code</label>
         <input type="text" class="form-control" th:field="*{uniqueCode}" id="uniqueCode">
     </div>
@@ -110,10 +48,11 @@
         <label for="money" class="form-label">Sum</label>
         <input type="text" class="form-control" th:field="*{money}" id="money">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Send</button>
     <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney"> Get money </a>
 
 </form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script></body>
 </html>

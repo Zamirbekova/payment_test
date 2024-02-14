@@ -13,8 +13,10 @@
     }
 </style>
 
-    <a class="d-grid gap-2 btn  btn-success" role="button" href="/sendMoney/new">Send money</a>
-<form  th:method="POST" th:action="@{/user/save}" th:object="${code}" style="width: 50%">
+<a class="d-grid gap-2 btn  btn-success" role="button" href="/sendMoney/new">Send money</a>
+<a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney">Get money</a>
+
+<form th:method="POST" th:action="@{/user/save}" th:object="${code}" style="width: 50%">
 
     <div th:each="comp:${code}">
         <br><br>
@@ -24,20 +26,20 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="true" href="#">Active</a>
                     </li>
-<div class="card-body">
-    <!--      <h5 class="card-title" th:text="${comp.surNameRecipient}"></h5>-->
-<!--    <th scope="col">SurName sender <p class="card-text" th:text="${comp.surNameSender}"></p> </th>-->
-    <p class="card-text" th:text="${comp.surNameSender}"></p>
-    <p class="card-text" th:text="${comp.surNameRecipient}"></p>
-<!--    <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>-->
-    <p class="card-text" th:text="${comp.phoneNumberSender}"></p>
-    <p class="card-text" th:text="${comp.description}"></p>
-    <p class="card-text" th:text="${comp.date}"></p>
-<!--    <p class="card-text" th:text="${comp.uniqueCode}"></p>-->
-    <p class="card-text" th:text="${comp.money}"></p>
 
-    <div class="d-grid gap-2 col-6 mx-auto">
-</body>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body">
+            <td style="background-color:yellowgreen;color:yellow;">
+            <th scope="col">SurName sender <p class="card-text" th:text="${comp.surNameSender}"></p></th>
+            <th scope="col">SurName recipient <p class="card-text" th:text="${comp.surNameRecipient}"></p>
+                <!--        <th scope="col">Phone number recipient <p class="card-text" th:text="${comp.phoneNumberRecipient}"></p>-->
+            <th scope="col">Phone number sender <p class="card-text" th:text="${comp.phoneNumberSender}"></p>
+            <th scope="col">Description <p class="card-text" th:text="${comp.description}"></p>
+            <th scope="col">Date <p class="card-text" th:text="${comp.date}"></p>
+            <th scope="col">Your unique code <p class="card-text" th:text="${comp.uniqueCode}"></p>
+            <th scope="col">Your money sum <p class="card-text" th:text="${comp.money}"></p>
 </div>
 </form>
 </html>

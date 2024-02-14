@@ -26,7 +26,7 @@ public class CashB {
     private LocalDate date;
     private String uniqueCode;
     private BigDecimal money;
-
+    private String emailUser;
 
     @OneToOne
     private Users senderId;

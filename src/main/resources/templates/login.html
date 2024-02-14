@@ -8,33 +8,6 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<!--    <div>-->
-<!--        <label th:text="#{phoneNumberSender}">Enter your phone number </label>-->
-<!--        <input th:field="*{phoneNumberSender}"/>-->
-<!--        <p th:each="error: ${#fields.errors('phoneNumberSender')}"</p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <label th:text="#{surNameSender}">Enter your surName </label>-->
-<!--        <input th:field="*{surNameSender}"/>-->
-<!--        <p th:each="error : ${#fields.errors('surNameSender')}"-->
-<!--           th:text="${error}">Validation error</p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <label th:text="#{email}">Enter your email </label>-->
-<!--        <input type="email" th:field="*{email}"/>-->
-<!--        <p th:each="error : ${#fields.errors('email')}"-->
-<!--           th:text="${error}">Validation error</p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <label th:text="#{password}">New password </label>-->
-<!--        <input type="password" th:field="*{password}"/>-->
-<!--        <p th:each="error : ${#fields.errors('password')}"-->
-<!--           th:text="${error}">Validation error</p>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <label th:text="#{confirmPass}">Confirm password </label>-->
-<!--        <input type="password" th:field="*{matchingPassword}"/>-->
-<!--    </div>-->
     <div class="mb-3">
         <label for="phoneNumberSender" class="form-label"> Enter your phone number  </label>
         <input type="text" class="form-control"  th:field="*{phoneNumberSender}" id="phoneNumberSender">

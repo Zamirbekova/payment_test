@@ -25,17 +25,25 @@ public class UserController {
 
     @PostMapping("/save")
     @PermitAll
-    public String getMoneySave(@ModelAttribute("code") Users code) {
-       service.getMoney(code);
+    public String getMoneySave(Model model, @RequestParam("code") String code) {
+        model.addAttribute("code", service.getMoney(code));
         return "viewMoneyRecipient";
 
     }
 
     @GetMapping("/save")
     @PermitAll
-    public String getMoneys(Model model,Users c) {
-        model.addAttribute("code", service.getMoney(c));
+    public String getMoneys(Model model, @RequestParam String code) {
+        model.addAttribute("code",service.getMoney(code));
         return "viewMoneyRecipient";
 
     }
-}
+    @GetMapping
+    @PermitAll
+    public String getMon(Model model){
+        model.addAttribute("mon",service.getAll());
+        return "getAllUsers";
+        }
+
+    }
+

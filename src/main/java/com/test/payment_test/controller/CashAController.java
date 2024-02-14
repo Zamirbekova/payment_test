@@ -1,6 +1,5 @@
 package com.test.payment_test.controller;
 
-import com.test.payment_test.modul.CashA;
 import com.test.payment_test.modul.CashB;
 import com.test.payment_test.service.CashService;
 import jakarta.annotation.security.PermitAll;
@@ -16,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sendMoney")
 public class CashAController {
     private final CashService service;
-@Autowired
+
+    @Autowired
     public CashAController(CashService service) {
         this.service = service;
     }
@@ -25,7 +25,7 @@ public class CashAController {
     @GetMapping("/new")
     @PermitAll
     public String sendmoney(Model model) {
-        model.addAttribute("sendMoney", new CashA());
+        model.addAttribute("sendMoney", new CashB());
         return "sendMoney";
     }
 
@@ -34,6 +34,7 @@ public class CashAController {
     public String saveMoney(@ModelAttribute("sendMoney") CashB cashA) {
         service.sendMoney(cashA);
         return "redirect:/sendMoney/allCashs";
+
     }
 
     @GetMapping("/allCashs")
@@ -44,4 +45,3 @@ public class CashAController {
     }
 
 }
-

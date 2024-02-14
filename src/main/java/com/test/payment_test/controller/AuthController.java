@@ -48,6 +48,6 @@ public class AuthController {
     public String login(@ModelAttribute("login") @Valid Users users,
                         Model model) {
         model.addAttribute("login", userService.loadUserByUsername(users.getEmail()));
-        return "viewMoneyRecipient";
+        return "mainPage";
     }
 }

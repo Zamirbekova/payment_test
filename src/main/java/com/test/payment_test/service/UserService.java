@@ -7,11 +7,12 @@ import java.util.List;
 
 public interface UserService {
 
-    Users getMoney(Users code);
+    Users getMoney(String code);
 
     List<Users> getAll();
 
     Users registerNewUserAccount(Users userDto) throws UserAlreadyExistException;
 
     Object loadUserByUsername(String email);
+
 }
