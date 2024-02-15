@@ -8,17 +8,28 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/user/getMoney}" th:object="${getMoney}" style="width: 50%">
+<!--<form th:method="GET" th:action="@{/user/getMoney/}" th:object="${results}" style="width: 50%">-->
+<form action="user/getMoney/{keyword}" method="get">
+    <label for="keyword">Keyword:</label>
+    <input type="text" id="keyword" name="keyword" required>
+    <button type="submit">Search</button>
+</form>
+<!--    <div class="mb-3">-->
+<!--        <label for="uniqueCode" class="form-label">Please write your UniqueCode</label>-->
+<!--        <input type="text" class="form-control" th:field="*{uniqueCode}" id="uniqueCode">-->
+<!--    </div>-->
+<ul th:if="${results}">
+    <li th:each="result : ${results}"></li>
+<!--        <span th:text="${result.getMoney()}"></span>-->
+                <th scope="col">Your money sum <p class="card-text" th:text="${results.money}"></p>
 
-    <div class="mb-3">
-        <label for="uniqueCode" class="form-label">Please write your UniqueCode</label>
-        <input type="text" class="form-control" th:field="*{uniqueCode}" id="uniqueCode">
-    </div>
+
+    </ul>
 
     <!--    <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/save"> Get money </a>-->
     <!--</form>-->
-    <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney/">Get money</a>
-    <div th:each="comp:${getMoney}">
+    <a class="d-grid gap-2 btn  btn-success" role="button" href="/user/getMoney/{keyword}">Get money</a>
+<!--    <div th:each="comp:${getMoney}">-->
         <br><br>
         <div class="card text-center card border-warning mb-3 bg-light mb-3">
             <div class="card-header bg-warning">

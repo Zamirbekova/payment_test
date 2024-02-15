@@ -24,6 +24,29 @@ public class CashServiceImpl implements CashService {
 
     @Transactional
     public CashB sendMoney(CashB cashA) {
+
+        CashB cashB = getCashB(cashA);
+        Users current = userRepository.findByPhoneNumber(cashA.getPhoneNumberRecipient());
+
+        if ( current!= null && current.getMoney()==null ) {
+            current.setMoney(cashA.getMoney());
+            userRepository.save(current);
+        }
+
+        if (current != null && current.getMoney() != null) {
+            BigDecimal currenSum = current.getMoney();
+            BigDecimal newSum = currenSum.add(cashA.getMoney());
+            current.setMoney(newSum);
+            current.setUniqueCode(cashA.getUniqueCode());
+            userRepository.save(current);
+
+        }
+
+        return cashBRepository.save(cashB);
+
+    }
+
+    private static CashB getCashB(CashB cashA) {
         CashB cashB = new CashB();
         cashB.setDate(cashA.getDate());
         cashB.setDescription(cashA.getDescription());
@@ -33,43 +56,34 @@ public class CashServiceImpl implements CashService {
         cashB.setSurNameSender(cashA.getSurNameSender());
         cashB.setUniqueCode(cashA.getUniqueCode());
         cashB.setStatus(Status.CREATED);
-
-//        Users users = userRepository.findByEmail(cashA.getEmailUser());
-//        assert users != null;
-//        cashB.setMoney(addMoneyToUser(users.getEmail(), cashA.getMoney()));
-//        cashB.setEmailUser(cashA.getEmailUser());
-//        users.setSurNameSender(cashA.getSurNameSender());
-//        users.setPhoneNumberSender(cashA.getPhoneNumberSender());
-//        users.setSurNameRecipient(cashA.getSurNameRecipient());
-//        users.setUniqueCode(cashA.getUniqueCode());
-//        users.setDate(cashA.getDate());
-//        users.setDescription(cashA.getDescription());
-//        userRepository.save(users);
-        return cashBRepository.save(cashB);
-
+        cashB.setMoney(cashA.getMoney());
+        return cashB;
     }
 
-    private BigDecimal addMoneyToUser(String id, BigDecimal additionalAmount) {
-        Users user = userRepository.findByEmail(id);
-
+    private void addMoneyToUser(String phoneNumberRecipient, BigDecimal additionalAmount) {
+        Users user = userRepository.findByPhoneNumber(phoneNumberRecipient);
+        CashB cashB = new CashB();
         if (user != null) {
             if (user.getMoney() == null) {
                 user.setMoney(additionalAmount);
+                cashB.setMoney(additionalAmount);
+                userRepository.save(user);
             }
-            if (user.getMoney() == null) {
 
-                BigDecimal currentAmount = null;
+            if (user.getMoney() != null) {
+                BigDecimal currentAmount = user.getMoney();
+                BigDecimal currentAmountCashB = cashB.getMoney();
                 assert false;
                 BigDecimal newAmount = currentAmount.add(additionalAmount);
+                BigDecimal newCashAmount = currentAmountCashB.add(additionalAmount);
                 user.setMoney(newAmount);
-                System.out.println("Деньги успешно добавлены.");
-            } else {
-                System.out.println("Пользователь с ID " + id + " не найден.");
+                cashB.setMoney(newCashAmount);
+                userRepository.save(user);
             }
-            return user.getMoney();
         }
-        return null;
     }
+
+
 
     public List<CashB> getAll() {
         return cashBRepository.findAll();

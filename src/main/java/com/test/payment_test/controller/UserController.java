@@ -17,20 +17,22 @@ public class UserController {
 
     private final UserService service;
 
-    @GetMapping("/getMoney")
+    @GetMapping("/getMoney/{keyword}")
     @PermitAll
-    public String getMoney(Model model) {
-        model.addAttribute("getMoney", new CashB());
+    public String getMoney(Model model,@PathVariable String keyword) {
+        CashB results = service.getMoneyUser(keyword);
+        model.addAttribute("results", results);
+//        model.addAttribute("getMoney", new CashB());
         return "getMoney";
     }
 
 
-    @GetMapping("/search/{keyword}")
-    public String search(@PathVariable String keyword, Model model) {
-       CashB results = service.getMoneyUser(keyword);
-        model.addAttribute("results", results);
-        return "viewMoneyRecipient";
-    }
+//    @GetMapping("/search/{keyword}")
+//    public String search(@PathVariable String keyword, Model model) {
+//       CashB results = service.getMoneyUser(keyword);
+//        model.addAttribute("results", results);
+//        return "viewMoneyRecipient";
+//    }
 
 //    @GetMapping("/get")
 //    @PermitAll

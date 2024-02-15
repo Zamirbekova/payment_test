@@ -28,16 +28,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public CashB getMoneyUser(String code) {
-//        Users users1 = repository.findUsersByUniqueCode(code);
-        CashB cashB = cashBRepository.findCashBByUniqueCode(code);
+        Users users = repository.findByUniqueCode(code);
+        CashB cashB = cashBRepository.findByUniqueCode(code);
+        boolean exists = cashBRepository.existsByUniqueCode(code);
+        boolean existsUserCode = repository.existsByUniqueCode(code);
+        if (exists && existsUserCode)
+            if (users.getUniqueCode() != null && cashB.getUniqueCode() != null)
+                if (users.getUniqueCode().equals(code) && cashB.getUniqueCode().equals(code))
+                    cashB.setStatus(Status.DONE);
 
-        if (cashB.getUniqueCode() != null) {
-            if (cashB.getUniqueCode().equals(code)) {
-                cashB.setStatus(Status.DONE);
-                return cashBRepository.findCashBByUniqueCode(code);
-            }
-        }
-        return null;
+
+        return cashBRepository.findCashBByUniqueCode(code);
+
     }
 
 
